@@ -8,7 +8,9 @@ node_modules/
 
 # testing
 /coverage
-
+/frontend/public/images
+/frontend/src/products.js
+/backend/data/products.js
 # production
 /build
 
