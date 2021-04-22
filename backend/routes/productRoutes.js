@@ -2,10 +2,9 @@ import express from "express";
 import asyncHandler from "express-async-handler";
 const router = express.Router();
 import Product from "../models/productModel.js";
-
-// Fetch all products
-// route GET /api/products
-// access Public
+// @desc    Fetch all products
+// @route   GET /api/products
+// @access  Public
 router.get(
     "/",
     asyncHandler(async (req, res) => {
@@ -13,16 +12,12 @@ router.get(
         res.json(products);
     })
 );
-
-// Fetch a single product
-// route GET /api/products/:id
-// access Public
+// @desc    Fetch single product
+// @route   GET /api/products/:id
+// @access  Public
 router.get(
     "/:id",
     asyncHandler(async (req, res) => {
-        //testing
-        //console.log("id product", req.params.id);
-
         const product = await Product.findById(req.params.id);
         if (product) {
             res.json(product);
@@ -32,5 +27,4 @@ router.get(
         }
     })
 );
-
 export default router;

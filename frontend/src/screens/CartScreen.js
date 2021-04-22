@@ -25,13 +25,16 @@ const CartScreen = ({ match, location, history }) => {
 
     useEffect(() => {
         if (productId) {
-            console.log("dispatch to cart");
             dispatch(addToCart(productId, qty));
         }
     }, [dispatch, productId, qty]);
 
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id));
+    };
+
+    const checkoutHandler = () => {
+        history.push("/login?redirect=shipping");
     };
 
     return (
@@ -47,7 +50,14 @@ const CartScreen = ({ match, location, history }) => {
                         {cartItems.map((item) => (
                             <ListGroup.Item key={item.product}>
                                 <Row>
-                                    <Col md={2}></Col>
+                                    <Col md={2}>
+                                        <Image
+                                            src={item.image}
+                                            alt={item.name}
+                                            fluid
+                                            rounded
+                                        />
+                                    </Col>
                                     <Col md={3}>
                                         <Link to={`/product/${item.product}`}>
                                             {item.name}
@@ -119,6 +129,16 @@ const CartScreen = ({ match, location, history }) => {
                                     0
                                 )
                                 .toFixed(2)}
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                            <Button
+                                type="button"
+                                className="btn-block"
+                                disabled={cartItems.length === 0}
+                                onClick={checkoutHandler}
+                            >
+                                Proceed To Checkout
+                            </Button>
                         </ListGroup.Item>
                     </ListGroup>
                 </Card>

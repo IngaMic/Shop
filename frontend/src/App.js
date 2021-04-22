@@ -18,7 +18,7 @@ const App = () => {
                     <Route path="/cart/:id?" component={CartScreen} />
                 </Container>
             </main>
-            <Footer></Footer>
+            <Footer />
         </Router>
     );
 };

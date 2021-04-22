@@ -4,7 +4,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import {
     productListReducer,
     productDetailsReducer,
-} from "./reducers/productReducers.js";
+} from "./reducers/productReducers";
 import { cartReducer } from "./reducers/cartReducers";
 
 const reducer = combineReducers({
@@ -28,5 +28,4 @@ const store = createStore(
     initialState,
     composeWithDevTools(applyMiddleware(...middleware))
 );
-
 export default store;

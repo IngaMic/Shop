@@ -4,11 +4,11 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
     switch (action.type) {
         case CART_ADD_ITEM:
             const item = action.payload;
+            console.log("state", state.cartItems);
 
             const existItem = state.cartItems.find(
                 (x) => x.product === item.product
             );
-
             if (existItem) {
                 return {
                     ...state,
@@ -17,6 +17,7 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
                     ),
                 };
             } else {
+                console.log("unsuccess");
                 return {
                     ...state,
                     cartItems: [...state.cartItems, item],
